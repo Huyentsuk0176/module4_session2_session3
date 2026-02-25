@@ -10,8 +10,15 @@ public class AuthorController {
     public AuthorController(AuthorService authorService){
         this.authorService=authorService;
     }
+    //Get
     @GetMapping
-    public List<Author> getAllThors(){
+    public List<Author> getAllAuthors(){
         return authorService.getAllAuthors();
+    }
+    //Post
+    @PostMapping
+    public Author createAuthor(@RequestBody Author author){
+        return
+                authorService.createAuthor(author);
     }
 }

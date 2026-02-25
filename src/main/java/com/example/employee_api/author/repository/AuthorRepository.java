@@ -16,4 +16,7 @@ public class AuthorRepository {
     public List<Author> findAll(){
         return authors;
     }
+    public void save(Author author){
+        authors.add(author);
+    }
 }

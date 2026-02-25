@@ -16,5 +16,10 @@ AuthorService{
                 public List<Author> getAllAuthors(){
             return authorRepository.findAll();
         }
+        @Override
+    public Author createAuthor(Author author){
+            authorRepository.save(author);
+            return author;
+        }
     }
 
