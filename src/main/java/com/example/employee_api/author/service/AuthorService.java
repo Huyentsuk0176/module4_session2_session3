@@ -5,4 +5,5 @@ public interface AuthorService {
     List<Author> getAllAuthors();
     Author createAuthor(Author author);
     Author findById(Long id);
+    Author updateAuthor(Long id, Author request);
 }

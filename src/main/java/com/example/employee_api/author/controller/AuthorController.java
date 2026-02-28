@@ -34,4 +34,15 @@ public class AuthorController {
         return
                 ResponseEntity.ok(author);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<?>
+    updateAuthor(@PathVariable("id") Long id,
+                 @RequestBody Author request){
+        Author updated= authorService.updateAuthor(id,request);
+        if(updated==null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Author not found");
+        }
+        return
+                ResponseEntity.ok(updated);
+    }
 }

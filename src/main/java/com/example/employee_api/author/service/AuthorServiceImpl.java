@@ -26,5 +26,17 @@ AuthorService{
         return authorRepository.findById(id);
 
     }
+    @Override
+    public Author updateAuthor(Long id, Author request) {
+        Author oldAuthor = authorRepository.findById(id);
+        if (oldAuthor == null) {
+            return null;
+        }
+        oldAuthor.setName(request.getName());
+        oldAuthor.setEmail(request.getEmail());
+        return oldAuthor;
+    }
+
+
     }
 
