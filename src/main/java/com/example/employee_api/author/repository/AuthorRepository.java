@@ -25,4 +25,7 @@ public class AuthorRepository {
                 .findFirst()
                 .orElse(null);
     }
+    public void delete(Long id) {
+        authors.removeIf(a -> a.getId()==id);
+    }
 }

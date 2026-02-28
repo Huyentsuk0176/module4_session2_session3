@@ -6,4 +6,5 @@ public interface AuthorService {
     Author createAuthor(Author author);
     Author findById(Long id);
     Author updateAuthor(Long id, Author request);
+    boolean deleteAuthor(Long id);
 }

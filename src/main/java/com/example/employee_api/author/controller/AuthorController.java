@@ -45,4 +45,26 @@ public class AuthorController {
         return
                 ResponseEntity.ok(updated);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteAuthor(@PathVariable("id") Long id) {
+
+        // 1) check 404 trước
+        Author existing = authorService.findById(id);
+        if (existing == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Author not found");
+        }
+
+        // 2) check rule Admin -> 400
+        if (existing.getName() != null && existing.getName().equalsIgnoreCase("Admin")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Không được phép xóa tài khoản quản trị (Admin)");
+        }
+
+        // 3) xóa
+        authorService.deleteAuthor(id);
+
+        // trả 204 No Content (chuẩn REST) hoặc 200 OK tùy thầy
+        return ResponseEntity.noContent().build(); // 204
+        // hoặc: return ResponseEntity.ok("Deleted"); // 200
+    }
 }

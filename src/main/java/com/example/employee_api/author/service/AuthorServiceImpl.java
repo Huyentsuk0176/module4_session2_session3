@@ -36,6 +36,25 @@ AuthorService{
         oldAuthor.setEmail(request.getEmail());
         return oldAuthor;
     }
+    @Override
+    public boolean deleteAuthor(Long id) {
+        // Bước 1: tìm theo id
+        Author author = authorRepository.findById(id);
+
+        // Không tìm thấy
+        if (author == null) {
+            return false; // controller sẽ trả 404
+        }
+
+        // Bước 2: validate không cho xóa Admin (không phân biệt hoa thường)
+        if (author.getName() != null && author.getName().equalsIgnoreCase("Admin")) {
+            return false; // controller sẽ trả 400 (theo rule)
+        }
+
+        // Bước 3: xóa
+        authorRepository.delete(id);
+        return true;
+    }
 
 
     }
