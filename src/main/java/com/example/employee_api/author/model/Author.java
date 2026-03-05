@@ -1,24 +1,26 @@
 package com.example.employee_api.author.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "author")
 public class Author {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
+
     private String email;
 
-    public Author() {
-    }
+    public Author() {}
 
-    public Author(int id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -23,12 +23,12 @@ AuthorService{
         }
     @Override
     public Author findById(Long id) {
-        return authorRepository.findById(id);
+        return authorRepository.findById(id).orElse(null);
 
     }
     @Override
     public Author updateAuthor(Long id, Author request) {
-        Author oldAuthor = authorRepository.findById(id);
+        Author oldAuthor = authorRepository.findById(id).orElse(null);
         if (oldAuthor == null) {
             return null;
         }
@@ -39,7 +39,7 @@ AuthorService{
     @Override
     public boolean deleteAuthor(Long id) {
         // Bước 1: tìm theo id
-        Author author = authorRepository.findById(id);
+        Author author = authorRepository.findById(id).orElse(null);
 
         // Không tìm thấy
         if (author == null) {
@@ -52,7 +52,7 @@ AuthorService{
         }
 
         // Bước 3: xóa
-        authorRepository.delete(id);
+        authorRepository.deleteById(id);
         return true;
     }
 
