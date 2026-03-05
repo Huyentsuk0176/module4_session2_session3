@@ -1,5 +1,7 @@
 package com.example.employee_api.author.model;
-
+import com.example.employee_api.book.model.Book;
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +15,8 @@ public class Author {
     private String name;
 
     private String email;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Book> books = new ArrayList<>();
 
     public Author() {}
 
@@ -38,5 +42,18 @@ public class Author {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
+        book.setAuthor(this);
+    }
+
+    public void removeBook(Book book) {
+        books.remove(book);
+        book.setAuthor(null);
     }
 }
