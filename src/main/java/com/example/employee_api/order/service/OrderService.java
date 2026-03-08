@@ -3,6 +3,7 @@ package com.example.employee_api.order.service;
 import com.example.employee_api.order.model.Order;
 import com.example.employee_api.order.repository.OrderRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -21,5 +22,14 @@ public class OrderService {
 
     public List<Order> getOrdersByCustomerName(String name) {
         return orderRepository.findByCustomerNameContaining(name);
+    }
+    public List<Order> getAllOrdersSorted(String field, String direction){
+        Sort sort;
+        if(direction.equalsIgnoreCase("desc")){
+            sort=Sort.by(field).descending();
+        }else{
+            sort=Sort.by(field).ascending();
+        }
+        return orderRepository.findAll(sort);
     }
 }

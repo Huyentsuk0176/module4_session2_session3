@@ -27,4 +27,8 @@ public class OrderController {
     public List<Order> searchByCustomerName(@RequestParam String customerName) {
         return orderService.getOrdersByCustomerName(customerName);
     }
+    @GetMapping("/sort")
+    public List<Order> sortOrders(@RequestParam String sortBy, @RequestParam String dir){
+        return orderService.getAllOrdersSorted(sortBy, dir);
+    }
 }
