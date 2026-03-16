@@ -15,15 +15,20 @@ public class FileController {
         if (file.isEmpty()){
             return "File rong";
         }
+        String fileName=file.getOriginalFilename();
+        //kiem tra dinh dang file
+        if (! fileName.endsWith(".png")&& ! fileName.endsWith(".jpg")){
+            return "chi cho phep file png hoac jpg";
+        }
 
         String uploadDir = System.getProperty("user.dir")+"uploads/";
+
 
         File dir = new File(uploadDir);
         if (!dir.exists()) {
             dir.mkdirs();
         }
 
-        String fileName = file.getOriginalFilename();
 
         File dest = new File(uploadDir+fileName);
 
