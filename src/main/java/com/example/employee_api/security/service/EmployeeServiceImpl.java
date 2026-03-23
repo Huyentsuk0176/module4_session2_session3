@@ -1,7 +1,6 @@
-package com.example.employee_api.service;
+package com.example.employee_api.security.service;
 
 import com.example.employee_api.model.Employee;
-import com.example.employee_api.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

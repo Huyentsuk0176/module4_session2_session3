@@ -3,7 +3,7 @@ package com.example.employee_api.controller;
 import com.example.employee_api.dto.request.DepartmentDTO;
 import com.example.employee_api.dto.response.ApiResponse;
 import com.example.employee_api.model.Department;
-import com.example.employee_api.service.DepartmentService;
+import com.example.employee_api.security.service.DepartmentService;
 
 import jakarta.validation.Valid;
 

@@ -1,9 +1,9 @@
-package com.example.employee_api.service.impl;
+package com.example.employee_api.security.service.impl;
 
 import com.example.employee_api.dto.request.DepartmentDTO;
 import com.example.employee_api.mapper.DepartmentMapper;
 import com.example.employee_api.model.Department;
-import com.example.employee_api.service.DepartmentService;
+import com.example.employee_api.security.service.DepartmentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
